@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de contato</title>
+</head>
+<body>
+ 
+    <h1>Entre em contato</h1>
+ 
+    <% if (erros.length > 0) { %>
+        <ul>
+            <% erros.forEach(function(erro) { %>
+                <li><%= erro.msg %></li>
+            <% }); %>
+        </ul>
+    <% } %>
+ 
+    <form action="/contato" method="POST">
+ 
+        <label for="nome">Nome:</label>
+        <input
+            type="text"
+            id="nome"
+            name="nome"
+            value="<%= dados.nome || '' %>"
+            required
+        >
+ 
+        <label for="email">E-mail:</label>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            value="<%= dados.email || '' %>"
+            required
+        >
+ 
+        <label for="telefone">Telefone:</label>
+        <input
+            type="tel"
+            id="telefone"
+            name="telefone"
+            value="<%= dados.telefone || '' %>"
+            required
+        >
+ 
+        <label for="assunto">Assunto:</label>
+        <input
+            type="text"
+            id="assunto"
+            name="assunto"
+            value="<%= dados.assunto || '' %>"
+            required
+        >
+ 
+        <label for="mensagem">Mensagem:</label>
+        <textarea
+            id="mensagem"
+            name="mensagem"
+            required
+        ><%= dados.mensagem || '' %></textarea>
+ 
+        <button type="submit">Enviar</button>
+ 
+    </form>
+ 
+</body>
+</html>
+ 
